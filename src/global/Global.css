@@ -1,0 +1,45 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.social{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+.social-liste{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 10px;
+    color: var(--text);
+}
+.line{
+    width: 1px;
+    height: 100px;
+    background-color: var(--text);
+    margin-bottom: 10px;
+}
+.navbar-liste{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 10px 30px;
+}
+.link{
+    cursor: pointer;
+    color: var(--text);
+    transition: color 0.2s ease-in;
+}
+.link:hover{
+    color: var(--primary);
+    transition: color 0.2s ease-in;
+
+}
+.active{
+    color: var(--primary-dark);
+}
