@@ -12,7 +12,7 @@ export const SetUp = (width, height, canva, bgColor) => {
         0.1,
         1000,
     )
-    camera.position.set(0, 0, 15)
+    camera.position.set(0, 0, 50)
     scene.add(camera)
 
     // Renderer
@@ -41,3 +41,11 @@ export const OnResize = (camera, renderer) => {
 
     renderer.setSize(width, height)
 }
+
+export const distance = (x1, y1, x2, y2) => {
+    return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+}
+
+export const map = (value, start1, stop1, start2, stop2) => {
+    return (value - start1) / (stop1 - start1) * (stop2 - start2) + start2
+  }
