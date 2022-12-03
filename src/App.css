@@ -8,23 +8,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-:root{
-  --primary: rgb(227, 178, 60); 
-  --primary-light: rgb(252, 196, 67); 
-  --primary-dark: rgb(179, 140, 49); 
-
-  --secondary: rgb(148, 191, 190); 
-  --secondary-light: rgb(182, 231, 230); 
-  --secondary-dark: rgb(110, 141, 141); 
-
-  --neutre: rgb(40, 40, 40); 
-  --neutre-light: rgb(55, 55, 55); 
-  --neutre-dark: rgb(20, 20, 20); 
-
-  --text: rgb(233, 231, 231);
-  --text-light: white;
-  --text-dark: rgb(155, 153, 153);
-}
 
 a{
   text-decoration: none;
@@ -33,9 +16,6 @@ ul{
   list-style: none;
 }
 
-.App{
-  background-color: var(--neutre);
-}
 .section{
   min-height: 100vh;
 }

@@ -3,15 +3,18 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import './Global.css'
 import { Box } from '@mui/material'
+import {theme} from '../theme'
+
 
 
 export const Social = ()=>{
+    const palette = theme()
 
     return(
         <div className='social'>
             <ul className='social-liste'>
                 <li>
-                    <div className='line'></div>
+                    <div className='line' style={{backgroundColor: palette.text.neutre}}></div>
                 </li>
                 <li className='link'>
                     <GitHubIcon sx={{ fontSize: 20}}/>

@@ -1,0 +1,12 @@
+#acceuil{
+    position: relative;
+}
+#canva{
+    position: absolute;
+    inset: 0;
+    max-width: 100%;
+}
+#canva > canvas{
+    width: 100vw;
+    max-width: 100%;
+}

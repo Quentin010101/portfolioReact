@@ -1,11 +1,13 @@
-.navbar{
+.navbar, .social{
     position: fixed;
+    z-index: 100;
+}
+.navbar{
     top: 0;
     left: 0;
     width: 100%;
 }
 .social{
-    position: fixed;
     bottom: 0;
     left: 0;
 }
@@ -16,12 +18,10 @@
     align-items: center;
     gap: 5px;
     padding: 10px 10px;
-    color: var(--text);
 }
 .line{
     width: 1px;
     height: 100px;
-    background-color: var(--text);
     margin-bottom: 10px;
 }
 .navbar-liste{
@@ -32,14 +32,9 @@
 }
 .link{
     cursor: pointer;
-    color: var(--text);
     transition: color 0.2s ease-in;
 }
 .link:hover{
-    color: var(--primary);
     transition: color 0.2s ease-in;
 
-}
-.active{
-    color: var(--primary-dark);
 }

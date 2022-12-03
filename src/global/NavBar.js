@@ -15,8 +15,7 @@ export const NavBar = () => {
                 <li>
                     <Link activeClass="active" className="link" to="projects" smooth={true} spy={true} duration={300}>Projets</Link>
                 </li>
-            </ul>
-            
+            </ul>         
         </div>
     )
 }
