@@ -4,24 +4,24 @@ import EmailIcon from '@mui/icons-material/Email';
 import './Global.css'
 import { Box } from '@mui/material'
 import { theme } from '../theme'
-import { useState } from 'react'
 
 
 export const Social = () => {
-    const items = [<GitHubIcon sx={{ fontSize: 14 }} />, <LinkedInIcon sx={{ fontSize: 14 }} />, <EmailIcon sx={{ fontSize: 14 }} />, <Box sx={{ fontSize: 10, fontWeight: 700 }}>CV</Box>]
+    const items = [<GitHubIcon sx={{ fontSize: 15 }} />, <LinkedInIcon sx={{ fontSize: 15 }} />, <EmailIcon sx={{ fontSize: 15 }} />, <Box sx={{ fontSize: 11, fontWeight: 700 }}>CV</Box>]
     
     const palette = theme()
 
     const listeSocial = items.map((item, index) => 
-    <li  key={index} >
-        <div style={{ cursor: 'pointer'}}>
+    <li  key={index} className='link'>
+        <div>
             {item}
         </div>
     </li>
     )
     return (
         <div className='social'>
-            <ul className='social-liste'>
+            <ul className='social-liste' style={{color: palette.secondary.dark}}>
+            <div className='line' style={{backgroundColor: palette.secondary.dark}}></div>
                 {listeSocial}
             </ul>
         </div>

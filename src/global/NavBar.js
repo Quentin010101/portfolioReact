@@ -8,7 +8,7 @@ export const NavBar = () => {
 
     return (
         <div className='navbar'>
-            <ul className='navbar-liste' style={{color: palette.primary.dark}}>
+            <ul className='navbar-liste' style={{color: palette.secondary.dark}}>
                 <li>
                     <Link activeClass="active" className="link" to="acceuil" smooth={true} spy={true} duration={300}>Acceuil</Link>
                 </li>

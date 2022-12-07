@@ -7,9 +7,12 @@ import * as THREE from 'three'
 import { gsap } from "gsap";
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
-// import kenia from '../assets/fonts/Kenia_Regular.json'
-import kenia from '../assets/fonts/Montserrat_Bold.json'
+// import newFont from '../assets/fonts/Kenia_Regular.json'
+// import newFont from '../assets/fonts/Montserrat_Bold.json'
+// import newFont from '../assets/fonts/Aurore.json'
+import newFont from '../assets/fonts/Caveat.json'
 import { color } from '@mui/system'
+import { AnimationMixer } from 'three'
 
 export const Canvas = () => {
 
@@ -20,12 +23,11 @@ export const Canvas = () => {
         }
         const palette = theme()
         const shapeSize = 1.78
-        const row = 9
-        const col = 15
+        const row = 15
+        const col = 25
         const gap = 0
         const shapeColor = new THREE.Color(palette.neutre.dark)
-        const planeColor = new THREE.Color(palette.neutre.dark)
-        const bgColor = palette.neutre.dark
+        const bgColor = 'white'
         const lightColor = {
             p: {
                 d: new THREE.Color(palette.primary.dark),
@@ -45,16 +47,17 @@ export const Canvas = () => {
         }
         const material = {
             color: shapeColor,
-            metalness: .38,
+            metalness: .68,
             roughness: .58,
             transparent: true,
-            opacity: 1
+            opacity: 1,
         }
         const planematerial = {
             color: shapeColor,
-            metalness: .38,
+            metalness: .68,
             roughness: .58,
             transparent: true,
+            opacity: 1,
         }
         const meshes = []
 
@@ -74,12 +77,12 @@ export const Canvas = () => {
         })
 
         // Light
-        AmbientLight(scene, lightColor.p.l)
-        PointLight(scene, lightColor.p.s, { x: -100, y: 0, z: 10 })
-        PointLight(scene, lightColor.p.l, { x: 100, y: 0, z: 8 })
-        PointLight(scene, lightColor.p.l, { x: 50, y: -20, z: 15 })
-        SpotLight(scene, lightColor.p.l)
-        RectLight(scene, lightColor.p.s)
+        AmbientLight(scene, palette.secondary.dark)
+        PointLight(scene, palette.secondary.light, { x: -100, y: 30, z: 5 })
+        PointLight(scene, palette.secondary.light, { x: 100, y: 0, z: 8 })
+        PointLight(scene, palette.secondary.light, { x: 50, y: -20, z: 22 })
+        SpotLight(scene, palette.neutre.light)
+        RectLight(scene, palette.neutre.light)
 
         // Draw
 
@@ -92,29 +95,31 @@ export const Canvas = () => {
         const boxMaterial = new THREE.MeshPhysicalMaterial(material)
 
         //--------------------------- FONT
-        const font = new FontLoader().parse(kenia);
+        const font = new FontLoader().parse(newFont);
 
-          const geometry = new TextGeometry( 'Quentin Cozic', {
-              font: font,
-              size: 1.3,
-              height: 2,
-              curveSegments: 1,
-          } );
-          var textMaterial = new THREE.MeshStandardMaterial( 
-              { 
-                color: shapeColor,
-                metalness: .48,
+        const geometry = new TextGeometry('Quentin Cozic', {
+            font: font,
+            size: 2,
+            height: 1.5,
+            curveSegments: 1,
+        });
+        var textMaterial = new THREE.MeshStandardMaterial(
+            {
+                color: palette.neutre.light,
+                metalness: 0.95,
                 roughness: .58,
             }
-            );
-            var meshi = new THREE.Mesh( geometry, textMaterial );
-              meshi.position.z = 0
-              meshi.position.y = -0.8
-              meshi.position.x = -6.5
-              meshi.receiveShadow = true
-              meshi.castShadow = true
-            scene.add( meshi );
+        );
+        var meshi = new THREE.Mesh(geometry, textMaterial);
 
+        geometry.center()
+        meshi.position.z = -4
+        meshi.receiveShadow = true
+        meshi.castShadow = true
+
+        scene.add(meshi)
+        
+        gsap.to(meshi.position, {z: 3, duration: 1.5, ease: 'elastic', delay: 2.8})
 
         //---------------------------
 
@@ -123,7 +128,7 @@ export const Canvas = () => {
             for (let j = 0; j < row; j++) {
 
                 const boxGeometry = new THREE.BoxGeometry(shapeSize, shapeSize, shapeSize)
-                if ((j < 3 || j > 5) || (i < 3 || i > 11)) {
+                if ((j < (row / 2 - 2) || j > (row / 2 + 1)) || (i < (col / 2 - 5) || i > (col / 2 + 4))) {
 
                     const mesh = new THREE.Mesh(boxGeometry, boxMaterial)
                     mesh.castShadow = true;
@@ -144,7 +149,7 @@ export const Canvas = () => {
 
         //------------ PLANE
         const planeGeometry = new THREE.PlaneGeometry(100, 100)
-         const planeMaterial = new THREE.MeshStandardMaterial(planematerial)
+        const planeMaterial = new THREE.MeshStandardMaterial(planematerial)
         const plane = new THREE.Mesh(planeGeometry, planeMaterial)
         plane.receiveShadow = true
         plane.material.opacity = 1
@@ -167,35 +172,36 @@ export const Canvas = () => {
                 for (let i = 0; i < col; i++) {
                     for (let j = 0; j < row; j++) {
 
-                        if ((j < 3 || j > 5) || (i < 3 || i > 11)) {
+                        if ((j < (row / 2 - 2) || j > (row / 2 + 1)) || (i < (col / 2 - 5) || i > (col / 2 + 4))) {
 
 
-                        const mesh = meshes[i][j]
+                            const mesh = meshes[i][j]
 
-                        const mouseDistance = distance(x, y,
-                            mesh.position.x + group.position.x,
-                            mesh.position.y + group.position.y);
+                            const mouseDistance = distance(x, y,
+                                mesh.position.x + group.position.x,
+                                mesh.position.y + group.position.y);
 
-                        const zValue = map(mouseDistance, 5, 0, 0, 8);
+                            const zValue = map(mouseDistance, 6, 0, 0, 8);
 
-                        // translate z
-                        gsap.to(mesh.position, { z: zValue < 1 ? 0 : zValue });
+                            // translate z
+                            gsap.to(mesh.position, { z: zValue < 1 ? 0 : zValue });
 
-                        // scale
-                        const scaleFactor = mesh.position.z / 2.6;
-                        const scale = scaleFactor < 1 ? 1 : scaleFactor;
-                        gsap.to(mesh.scale, {
-                            ease: 'power2',
-                            x: scale,
-                            y: scale,
-                            z: scale,
-                        });
-                    }
+                            // scale
+                            const scaleFactor = mesh.position.z / 2.6;
+                            const scale = scaleFactor < 1 ? 1 : scaleFactor;
+                            gsap.to(mesh.scale, {
+                                ease: 'power2',
+                                x: scale,
+                                y: scale,
+                                z: scale,
+                            });
+                        }
                     }
                 }
 
             }
         }
+
 
         // Animation
         function animate() {

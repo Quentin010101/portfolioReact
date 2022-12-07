@@ -1,14 +1,14 @@
 .navbar, .social{
     position: fixed;
     z-index: 100;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 .navbar{
     top: 0;
     left: 0;
     width: 100%;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
 }
 .social{
     bottom: 0;
@@ -30,10 +30,10 @@
 .navbar-liste{
     display: flex;
     justify-content: flex-end;
-    gap: 2.5rem;
+    gap: 2rem;
     padding: 1.5rem 4rem;
 }
-/* .link{
+.link{
     cursor: pointer;
-} */
+} 
 
