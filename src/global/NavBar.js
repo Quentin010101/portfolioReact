@@ -1,11 +1,14 @@
 import './Global.css'
 import { Link } from 'react-scroll'
+import {theme} from '../theme'
 
 export const NavBar = () => {
 
+    const palette = theme()
+
     return (
         <div className='navbar'>
-            <ul className='navbar-liste'>
+            <ul className='navbar-liste' style={{color: palette.primary.dark}}>
                 <li>
                     <Link activeClass="active" className="link" to="acceuil" smooth={true} spy={true} duration={300}>Acceuil</Link>
                 </li>

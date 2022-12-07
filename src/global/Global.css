@@ -1,11 +1,14 @@
 .navbar, .social{
     position: fixed;
     z-index: 100;
+    opacity: 0.6;
 }
 .navbar{
     top: 0;
     left: 0;
     width: 100%;
+    font-size: 14px;
+    font-weight: 500;
 }
 .social{
     bottom: 0;
@@ -17,7 +20,7 @@
     justify-content: flex-end;
     align-items: center;
     gap: 5px;
-    padding: 10px 10px;
+    padding: 1.5rem 1.5rem;
 }
 .line{
     width: 1px;
@@ -27,14 +30,10 @@
 .navbar-liste{
     display: flex;
     justify-content: flex-end;
-    gap: 20px;
-    padding: 10px 30px;
+    gap: 2.5rem;
+    padding: 1.5rem 4rem;
 }
 .link{
     cursor: pointer;
-    transition: color 0.2s ease-in;
 }
-.link:hover{
-    transition: color 0.2s ease-in;
 
-}
