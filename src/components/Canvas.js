@@ -8,9 +8,9 @@ import { gsap } from "gsap";
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 // import newFont from '../assets/fonts/Kenia_Regular.json'
-// import newFont from '../assets/fonts/Montserrat_Bold.json'
+import newFont from '../assets/fonts/Montserrat_Bold.json'
 // import newFont from '../assets/fonts/Aurore.json'
-import newFont from '../assets/fonts/Caveat.json'
+// import newFont from '../assets/fonts/Caveat.json'
 import { color } from '@mui/system'
 import { AnimationMixer } from 'three'
 
@@ -77,9 +77,9 @@ export const Canvas = () => {
         })
 
         // Light
-        AmbientLight(scene, palette.secondary.dark)
-        PointLight(scene, palette.secondary.light, { x: -100, y: 30, z: 5 })
-        PointLight(scene, palette.secondary.light, { x: 100, y: 0, z: 8 })
+        AmbientLight(scene, 'white')
+        PointLight(scene, palette.primary.light, { x: -100, y: 30, z: 5 })
+        PointLight(scene, palette.primary.light, { x: 100, y: 0, z: 8 })
         PointLight(scene, palette.secondary.light, { x: 50, y: -20, z: 22 })
         SpotLight(scene, palette.neutre.light)
         RectLight(scene, palette.neutre.light)
@@ -101,13 +101,15 @@ export const Canvas = () => {
             font: font,
             size: 2,
             height: 1.5,
-            curveSegments: 1,
+            // curveSegments: 1,
         });
         var textMaterial = new THREE.MeshStandardMaterial(
             {
                 color: palette.neutre.light,
-                metalness: 0.95,
-                roughness: .58,
+                metalness: 0.65,
+                roughness: .88,
+                emissive: lightColor.s.d,
+                emissiveIntensity: 0.05,
             }
         );
         var meshi = new THREE.Mesh(geometry, textMaterial);
@@ -119,7 +121,7 @@ export const Canvas = () => {
 
         scene.add(meshi)
         
-        gsap.to(meshi.position, {z: 3, duration: 1.5, ease: 'elastic', delay: 2.8})
+        gsap.to(meshi.position, {z: 3, duration: 1.5, ease: 'elastic', delay: 3.2})
 
         //---------------------------
 

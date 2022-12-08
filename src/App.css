@@ -10,7 +10,30 @@
 }
 
 :root{
-  --poppins: 'Poppins', sans-serif
+  --poppins: 'Poppins', sans-serif;
+
+  /* --- Color --- */
+
+  --c-p-l: rgb(252, 196, 67);
+  --c-p-n: rgb(227, 178, 60);
+  --c-p-d: rgb(179, 140, 49);
+
+  /* --c-s-l: rgb(182, 231, 230);
+  --c-s-n: rgb(148, 191, 190);
+  --c-s-d: rgb(110, 141, 141); */
+
+  --c-s-l: #276FBF;
+  --c-s-n: #458AD9;
+  --c-s-d: #2362A9;
+
+  --c-n-l: rgb(55, 55, 55);
+  --c-n-n: rgb(40, 40, 40);
+  --c-n-d: rgb(20, 20, 20);
+
+  --c-t-l: rgb(255, 255, 255);
+  --c-t-n: rgb(233, 231, 231);
+  --c-t-d: rgb(155, 153, 153);
+
 }
 
 
@@ -20,8 +43,70 @@ a{
 ul{
   list-style: none;
 }
-
 .section{
   min-height: 100vh;
+}
+.loaderPage {
+  position: relative;
+  height: 100vh;
+  background-color: var(--c-n-d);
+}
+.loader__element{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: 7vh;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--c-t-l)
+}
+.element1{
+  display: flex;
+  gap: 10px;
+}
+.element1 div:nth-child(1){
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+.element1 div:nth-child(2){
+  animation: myAnim2 1s ease 0s 1 normal forwards;
+}
+.element2{
+  opacity: 0;
+  animation: myAnim3 1s ease 0.5s 1 normal forwards;
+}
+
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(-250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes myAnim2 {
+	0% {
+		opacity: 0;
+		transform: translateX(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes myAnim3 {
+	0% {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 

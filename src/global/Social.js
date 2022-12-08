@@ -7,7 +7,7 @@ import { theme } from '../theme'
 
 
 export const Social = () => {
-    const items = [<GitHubIcon sx={{ fontSize: 15 }} />, <LinkedInIcon sx={{ fontSize: 15 }} />, <EmailIcon sx={{ fontSize: 15 }} />, <Box sx={{ fontSize: 11, fontWeight: 700 }}>CV</Box>]
+    const items = [<GitHubIcon sx={{ fontSize: 16 }} />, <LinkedInIcon sx={{ fontSize: 16 }} />, <EmailIcon sx={{ fontSize: 16 }} />, <Box sx={{ fontSize: 12, fontWeight: 700 }}>CV</Box>]
     
     const palette = theme()
 

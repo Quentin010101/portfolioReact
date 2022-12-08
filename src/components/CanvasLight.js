@@ -1,11 +1,11 @@
 import * as THREE from 'three'
 
 export const AmbientLight = (scene, color) =>{
-    const light = new THREE.AmbientLight(color, 0.7)
+    const light = new THREE.AmbientLight(color, 1.5)
     scene.add(light)
 }
 export const SpotLight = (scene, color) =>{
-    const light = new THREE.SpotLight(color, 0.5,1000);
+    const light = new THREE.SpotLight(color, 1.5,1000);
 
     light.position.set(0, 0, 27);
     light.castShadow = true;
@@ -13,7 +13,7 @@ export const SpotLight = (scene, color) =>{
     scene.add(light);
 }
 export const PointLight = (scene, color, position) =>{
-    const light = new THREE.PointLight(color, 1, 1000, 1);
+    const light = new THREE.PointLight(color, 1.2, 1000, 1);
     light.castShadow = true;
 
 
